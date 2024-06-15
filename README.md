@@ -4,7 +4,7 @@
 ![Static Badge](https://img.shields.io/badge/Kotlin-2.0.0-red)
 ![Static Badge](https://img.shields.io/badge/Kotlin%20Coroutines-1.8.0-red)
 ![Static Badge](https://img.shields.io/badge/Kotlin%20Serialization-1.6.3-red)
-![Static Badge](https://img.shields.io/badge/Ktlint-1.3.0-red)
+![Static Badge](https://img.shields.io/badge/Ktlint-1.3.0-red)   
 ![Static Badge](https://img.shields.io/badge/Dagger%20Hilt-2.50-red)
 ![Static Badge](https://img.shields.io/badge/Paging-3.3.0-red)
 ![Static Badge](https://img.shields.io/badge/OkHttp-4.12.0-red)
@@ -17,15 +17,15 @@
 
 ## Clean Architecture Modules
 
-![Static Badge](https://img.shields.io/badge/application-grey)
+![Static Badge](https://img.shields.io/badge/application-grey)   
 ![Static Badge](https://img.shields.io/badge/view-home-red)
-![Static Badge](https://img.shields.io/badge/view-core-purple)
+![Static Badge](https://img.shields.io/badge/view-core-purple)   
 ![Static Badge](https://img.shields.io/badge/presenter-home-red)
 ![Static Badge](https://img.shields.io/badge/presenter-model.news-darkred)
-![Static Badge](https://img.shields.io/badge/presenter-core-purple)
+![Static Badge](https://img.shields.io/badge/presenter-core-purple)   
 ![Static Badge](https://img.shields.io/badge/domain-news-red)
 ![Static Badge](https://img.shields.io/badge/domain-model.news-darkred)
-![Static Badge](https://img.shields.io/badge/domain-model.core-purple)
+![Static Badge](https://img.shields.io/badge/domain-model.core-purple)   
 ![Static Badge](https://img.shields.io/badge/data-news-red)
 ![Static Badge](https://img.shields.io/badge/data.remote-news-red)
 ![Static Badge](https://img.shields.io/badge/data.remote-core-purple)
@@ -34,7 +34,7 @@
 
 ![Static Badge](https://img.shields.io/badge/view-home-red) &rarr;
 ![Static Badge](https://img.shields.io/badge/presenter-home-red) &rarr;
-![Static Badge](https://img.shields.io/badge/domain-news-red)
+![Static Badge](https://img.shields.io/badge/domain-news-red)   
 ![Static Badge](https://img.shields.io/badge/data.remote-news-red) &rarr;
 ![Static Badge](https://img.shields.io/badge/data-news-red) &rarr;
 ![Static Badge](https://img.shields.io/badge/domain-news-red)
