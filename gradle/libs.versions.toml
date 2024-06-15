@@ -1,0 +1,114 @@
+[versions]
+
+# Build
+
+## Application namespace.
+namespace = "pe.richard.news"
+library = "pe.richard.library"
+
+## Application SDK.
+sdk-target = "34"
+sdk-min = "28"
+
+## Application version.
+version-code = "1"
+version-name = "1.0.0"
+
+## Application build options.
+debug-minify = "false"
+debug-debuggable = "true"
+release-minify = "true"
+release-debuggable = "false"
+
+## JVM version.
+jvm = "17"
+
+# Plugins
+
+## Android gradle plugin.
+agp = "8.5.0"
+ksp = "2.0.0-1.0.22"
+
+## Kotlin.
+kotlin = "2.0.0"
+coroutines = "1.8.0"
+
+# Libraries
+
+## AndroidX core.
+core-ktx = "1.13.1"
+appcompat = "1.7.0"
+activity = "1.9.0"
+lifecycle = "2.8.2"
+
+## AndroidX UI.
+constraintlayout = "2.1.4"
+paging = "3.3.0"
+swiperefreshlayout = "1.1.0"
+recyclerview = "1.3.2"
+material = "1.12.0"
+
+## Dependency injection.
+hilt = "2.50"
+
+## Network.
+okhttp = "4.12.0"
+retrofit = "2.9.0"
+serialization = "1.6.3"
+serialization-converter = "1.0.0"
+
+# Image.
+glide = "4.15.1"
+
+## Code formmer: Used in subprojects { ... }
+ktlint = "1.3.0"
+
+[libraries]
+
+## Kotlin core.
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+## AndroidX core.
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-savedstate = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
+
+## AndroidX UI.
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+android-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+## Dependency injection.
+dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+
+## Network.
+network-okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "okhttp" }
+network-okhttp = { group = "com.squareup.okhttp3", name = "okhttp" }
+network-okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor" }
+network-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+network-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
+network-serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "serialization-converter" }
+
+# Image.
+glide-core = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glide-okhttp = { group = "com.github.bumptech.glide", name = "okhttp3-integration", version.ref = "glide" }
+glide-ksp = { group = "com.github.bumptech.glide", name = "ksp", version.ref = "glide" }
+
+[plugins]
+
+## Android gradle plugin.
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+android-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+## Kotlin gradle plugin.
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+## Dependency injection gradle plugin.
+dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
