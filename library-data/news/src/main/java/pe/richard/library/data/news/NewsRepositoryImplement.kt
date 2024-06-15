@@ -26,6 +26,12 @@ internal class NewsRepositoryImplement private constructor(
         )
     }
 
+    override fun set(
+        model: NewsModel
+    ): Flow<NewsModel?> =
+        cache.set(model)
+            .flowOn(Dispatchers.Default)
+
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun get(
         page: Int,

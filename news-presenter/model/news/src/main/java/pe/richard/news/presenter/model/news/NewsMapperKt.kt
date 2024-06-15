@@ -15,3 +15,16 @@ fun NewsModel.toData() =
         publishedAt = publishedAt,
         openedAt = openedAt
     )
+
+fun News.toModel() =
+    NewsModel(
+        source = source,
+        title = title,
+        target = target,
+        image = image,
+        author = author,
+        description = description,
+        content = content,
+        publishedAt = publishedAt,
+        openedAt = openedAt
+    )

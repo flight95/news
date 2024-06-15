@@ -42,6 +42,7 @@
         android:maxLines="2"
         android:minLines="2"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textColor="@color/news_title"
         app:layout_constraintBottom_toTopOf="@+id/news_published"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/news_image"

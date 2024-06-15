@@ -29,6 +29,9 @@ interface NewsCacheDataAccessObject {
     ): List<NewsEntity>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(entity: NewsEntity)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(entities: List<NewsEntity>)
 
     @Query(

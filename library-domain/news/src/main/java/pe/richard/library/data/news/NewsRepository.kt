@@ -6,6 +6,10 @@ import pe.richard.library.domain.model.news.NewsModel
 
 interface NewsRepository {
 
+    fun set(
+        model: NewsModel
+    ): Flow<NewsModel?>
+
     fun get(
         page: Int,
         size: Int

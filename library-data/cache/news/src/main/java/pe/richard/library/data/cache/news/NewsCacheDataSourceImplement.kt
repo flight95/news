@@ -26,6 +26,18 @@ internal class NewsCacheDataSourceImplement private constructor(
 
     private val dao = database.getNewsCacheDataAccessObject()
 
+    override fun set(
+        model: NewsModel
+    ): Flow<NewsModel?> =
+        flow { emit(model.toEntity()) }
+            .map { entity ->
+                entity?.let { fixed ->
+                    dao.insert(fixed)
+                    model
+                }
+            }
+            .flowOn(Dispatchers.IO)
+
     override fun get(
         page: Int,
         size: Int

@@ -12,5 +12,5 @@ data class News(
     val description: String?,
     val content: String?,
     val publishedAt: Long,
-    val openedAt: Long?
+    var openedAt: Long?
 )

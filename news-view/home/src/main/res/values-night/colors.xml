@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources />
+<resources>
+    <color name="news_title">#DBDEE3</color>
+    <color name="news_title_tint">#F9A020</color>
+</resources>

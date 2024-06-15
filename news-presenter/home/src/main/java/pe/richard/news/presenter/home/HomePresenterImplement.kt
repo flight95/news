@@ -15,15 +15,18 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import pe.richard.library.domain.news.GetNews
 import pe.richard.library.domain.news.RemoveNews
+import pe.richard.library.domain.news.SetNews
 import pe.richard.news.presenter.core.paging.PagingSourceImplement
 import pe.richard.news.presenter.model.news.News
 import pe.richard.news.presenter.model.news.toData
+import pe.richard.news.presenter.model.news.toModel
 import javax.inject.Inject
 
 @HiltViewModel
 internal class HomePresenterImplement @Inject constructor(
     application: Application,
     private val state: SavedStateHandle,
+    private val setNews: SetNews,
     private val getNews: GetNews,
     private val removeNews: RemoveNews
 ) : AndroidViewModel(application),
@@ -44,6 +47,17 @@ internal class HomePresenterImplement @Inject constructor(
                 ).map { paging -> paging.toModel { entity -> entity.toData() } }
             }
         }.flow.cachedIn(viewModelScope)
+
+    override fun applyNews(
+        news: News,
+        callback: (Boolean) -> Unit
+    ) {
+        viewModelScope.launch {
+            setNews(news.toModel())
+                .catch { callback(false) }
+                .collect { model -> callback(model != null) }
+        }
+    }
 
     override fun clearNews(
         callback: (Boolean) -> Unit

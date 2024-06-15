@@ -25,11 +25,13 @@ import pe.richard.news.view.core.date.TimeFormat
 import pe.richard.news.view.core.glide.loadImage
 import pe.richard.news.view.core.paging.refresh
 import pe.richard.news.view.core.view.clicks
+import pe.richard.news.view.core.view.getColor
 import pe.richard.news.view.core.view.setOnApplyWindowInsetsListener
 import pe.richard.news.view.home.databinding.HomeActivityBinding
 import pe.richard.news.view.home.databinding.HomeNewsItemBinding
 import pe.richard.news.view.home.databinding.HomeNewsItemStateBinding
 import pe.richard.news.view.news.NewsActivity
+import java.util.Calendar
 import java.util.Date
 
 @AndroidEntryPoint
@@ -99,7 +101,13 @@ class HomeActivity :
 
     private fun bindContents() {
         Adapter(
-            onClicked = { news ->
+            onClicked = { position, news, previous ->
+                presenter.applyNews(news) { success ->
+                    if (!success) {
+                        (binding?.homeContents?.adapter as? Adapter)
+                            ?.setOpenedAt(position, previous)
+                    }
+                }
                 NewsActivity.newIntent(this, news.target)
                     ?.let { intent -> startActivity(intent) }
             }
@@ -125,7 +133,7 @@ class HomeActivity :
     //region Adapter, view holders and model of adapter.
 
     private class Adapter(
-        private val onClicked: (News) -> Unit
+        private val onClicked: (Int, News, Long?) -> Unit // position, news and previous opened at.
     ) : PagingDataAdapter<News, ViewHolder>(
         object : DiffUtil.ItemCallback<News>() {
 
@@ -143,17 +151,27 @@ class HomeActivity :
             viewType: Int
         ) = ViewHolder(
             HomeNewsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-            onClicked
+            onClicked = { position, news ->
+                val previous = news.openedAt
+                news.openedAt = Calendar.getInstance().timeInMillis
+                setOpenedAt(position, news.openedAt)
+                onClicked(position, news, previous)
+            }
         )
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            getItem(position)?.let { news -> holder.bind(news) }
+            getItem(position)?.let { news -> holder.bind(position, news) }
+        }
+
+        fun setOpenedAt(position: Int, openedAt: Long?) {
+            getItem(position)?.openedAt = openedAt
+            notifyItemChanged(position)
         }
     }
 
     private class ViewHolder(
         binding: HomeNewsItemBinding,
-        private val onClicked: (News) -> Unit
+        private val onClicked: (Int, News) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private val imageView = binding.newsImage
@@ -162,12 +180,18 @@ class HomeActivity :
         private val publishedView = binding.newsPublished
         private val actionView = binding.newsAction
 
-        fun bind(news: News) {
+        fun bind(position: Int, news: News) {
             imageView.loadImage(news.id, news.image)
             sourceView.text = news.source
             titleView.text = news.title
+            titleView.getColor(
+                when (news.openedAt) {
+                    null -> R.color.news_title
+                    else -> R.color.news_title_tint
+                }
+            )?.let { color -> titleView.setTextColor(color) }
             publishedView.text = TimeFormat.format(Date(news.publishedAt))
-            actionView.clicks { onClicked(news) }
+            actionView.clicks { onClicked(position, news) }
         }
     }
 

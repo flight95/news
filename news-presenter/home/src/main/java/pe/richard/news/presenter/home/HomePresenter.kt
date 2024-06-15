@@ -7,5 +7,13 @@ import pe.richard.news.presenter.model.news.News
 interface HomePresenter {
 
     val newsFlow: Flow<PagingData<News>>
-    fun clearNews(callback: (Boolean) -> Unit)
+
+    fun applyNews(
+        news: News,
+        callback: (Boolean) -> Unit
+    )
+
+    fun clearNews(
+        callback: (Boolean) -> Unit
+    )
 }
