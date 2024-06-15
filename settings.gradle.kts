@@ -44,6 +44,10 @@ include(":library-domain:model:news")
 include(":library-domain:news")
 
 // Clean architecture data.
+include(":library-data:core")
 include(":library-data:news")
 include(":library-data:remote:core")
 include(":library-data:remote:news")
+include(":library-data:cache:database:news")
+include(":library-data:cache:database")
+include(":library-data:cache:news")

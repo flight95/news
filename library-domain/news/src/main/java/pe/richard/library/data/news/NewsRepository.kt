@@ -10,4 +10,6 @@ interface NewsRepository {
         page: Int,
         size: Int
     ): Flow<PagingModel<NewsModel>>
+
+    fun remove(): Flow<Boolean>
 }

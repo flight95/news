@@ -5,5 +5,15 @@ import pe.richard.library.domain.model.core.paging.PagingModel
 import pe.richard.library.domain.model.news.NewsModel
 
 interface NewsCacheDataSource {
-    fun get(): Flow<PagingModel<NewsModel>>
+
+    fun get(
+        page: Int,
+        size: Int
+    ): Flow<PagingModel<NewsModel>>
+
+    fun add(
+        models: List<NewsModel>
+    ): Flow<List<NewsModel>>
+
+    fun remove(): Flow<Boolean>
 }

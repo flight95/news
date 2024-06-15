@@ -1,1 +1,5 @@
-<resources />
+<resources>
+    <string name="news_started">Start loading the content: %s</string>
+    <string name="news_finished">The content has been loaded: %s</string>
+    <string name="news_error">The content could not be loaded: %s</string>
+</resources>

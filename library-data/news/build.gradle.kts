@@ -43,6 +43,9 @@ android {
 
 dependencies {
 
+    // Clean architecture data.
+    implementation(project(":library-data:core"))
+
     // Clean architecture domain.
     implementation(project(":library-domain:model:core"))
     implementation(project(":library-domain:model:news"))

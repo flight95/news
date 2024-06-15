@@ -23,7 +23,7 @@ import pe.richard.news.presenter.model.news.News
 import pe.richard.news.view.core.context.tablet
 import pe.richard.news.view.core.date.TimeFormat
 import pe.richard.news.view.core.glide.loadImage
-import pe.richard.news.view.core.paging.setRefresh
+import pe.richard.news.view.core.paging.refresh
 import pe.richard.news.view.core.view.clicks
 import pe.richard.news.view.core.view.setOnApplyWindowInsetsListener
 import pe.richard.news.view.home.databinding.HomeActivityBinding
@@ -87,7 +87,14 @@ class HomeActivity :
     }
 
     private fun bindRefresh() {
-        binding?.homeRefresh?.setRefresh(binding?.homeContents)
+        binding?.homeRefresh?.let { view ->
+            view.setOnRefreshListener {
+                presenter.clearNews {
+                    binding?.homeContents?.refresh()
+                    view.isRefreshing = false
+                }
+            }
+        }
     }
 
     private fun bindContents() {

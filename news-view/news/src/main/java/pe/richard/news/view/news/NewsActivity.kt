@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
+import com.google.android.material.snackbar.Snackbar
 import pe.richard.news.view.core.view.setOnApplyWindowInsetsListener
 import pe.richard.news.view.core.web.initializeWebChromeClient
 import pe.richard.news.view.core.web.initializeWebSettings
@@ -69,7 +71,10 @@ class NewsActivity :
         }.let { uri ->
             when (uri) {
                 null -> onBackPressedDispatcher.onBackPressed()
-                else -> bindContents(uri) // Bind views.
+                else -> { // Bind views.
+                    bindProgress(true)
+                    bindContents(uri)
+                }
             }
         }
     }
@@ -88,11 +93,49 @@ class NewsActivity :
 
     //region Bind views.
 
+    private fun bindProgress(progress: Boolean) {
+        binding?.newsProgressContainer?.visibility = when (progress) {
+            true -> View.VISIBLE
+            false -> View.GONE
+        }
+    }
+
     private fun bindContents(uri: Uri) {
         binding?.newsContents?.apply {
             initializeWebSettings()
             initializeWebChromeClient()
-            initializeWebViewClient()
+            initializeWebViewClient(
+                pageStarted = { _, uri, _ ->
+                    binding?.root?.let { view ->
+                        Snackbar.make(
+                            view,
+                            getString(R.string.news_started, uri?.toString() ?: ""),
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
+                    bindProgress(true)
+                },
+                pageFinished = { _, uri ->
+                    binding?.root?.let { view ->
+                        Snackbar.make(
+                            view,
+                            getString(R.string.news_finished, uri?.toString() ?: ""),
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
+                    bindProgress(false)
+                },
+                receivedError = { _, _, error ->
+                    binding?.root?.let { view ->
+                        Snackbar.make(
+                            view,
+                            getString(R.string.news_error, error?.description ?: ""),
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
+                    bindProgress(false)
+                }
+            )
             loadUrl(uri.toString())
         }
     }

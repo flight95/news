@@ -1,5 +1,6 @@
 package pe.richard.news.view.core.web
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -11,12 +12,13 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import pe.richard.library.domain.model.core.primitive.toUri
 
+@SuppressLint("SetJavaScriptEnabled")
 fun WebView.initializeWebSettings() {
     settings.apply {
         setSupportMultipleWindows(true)
         setSupportZoom(false)
         cacheMode = WebSettings.LOAD_NO_CACHE
-        javaScriptEnabled = false
+        javaScriptEnabled = true
         displayZoomControls = false
     }
 }
@@ -47,7 +49,6 @@ fun WebView.initializeWebViewClient(
             when (val result = overrideUrlLoading?.let { callback -> callback(view, request?.url) }) {
                 null -> request?.url.let { uri ->
                     when (uri?.scheme) {
-                        null -> false
                         "http" -> false
                         "tel" -> {
                             view?.context?.startActivity(Intent(Intent.ACTION_DIAL, uri))
@@ -57,7 +58,7 @@ fun WebView.initializeWebViewClient(
                             view?.context?.startActivity(Intent(Intent.ACTION_SENDTO, uri))
                             true
                         }
-                        else -> false
+                        else -> true
                     }
                 }
                 else -> result

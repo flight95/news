@@ -50,6 +50,9 @@ dependencies {
 
     // Clean architecture data.
     // TODO-DAGGER-HILT: Required when building with KSP.
+    implementation(project(":library-data:cache:database:news"))
+    implementation(project(":library-data:cache:database"))
+    implementation(project(":library-data:cache:news"))
     implementation(project(":library-data:remote:news"))
     implementation(project(":library-data:news"))
 

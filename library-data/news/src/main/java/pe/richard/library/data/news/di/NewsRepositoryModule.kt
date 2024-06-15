@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
+import pe.richard.library.data.cache.news.NewsCacheDataSource
 import pe.richard.library.data.news.NewsRepository
 import pe.richard.library.data.news.NewsRepositoryImplement
 import pe.richard.library.data.remote.news.NewsRemoteDataSource
@@ -16,8 +17,10 @@ internal object NewsRepositoryModule {
     @Provides
     @ViewModelScoped
     fun provideNewsRepository(
+        cache: NewsCacheDataSource,
         remote: NewsRemoteDataSource
     ): NewsRepository = NewsRepositoryImplement.getInstance(
+        cache,
         remote
     )
 }

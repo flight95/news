@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import pe.richard.library.data.remote.news.response.toModel
 import pe.richard.library.domain.model.core.paging.PagingModel
+import pe.richard.library.domain.model.core.primitive.aboveOrNull
 import pe.richard.library.domain.model.news.NewsModel
-import pe.richard.library.entity.core.primitive.aboveOrNull
 
 internal class NewsRemoteDataSourceImplement private constructor(
     private val api: NewsRemoteApi

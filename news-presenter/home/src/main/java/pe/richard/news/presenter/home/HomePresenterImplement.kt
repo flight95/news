@@ -10,8 +10,11 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import pe.richard.library.domain.news.GetNews
+import pe.richard.library.domain.news.RemoveNews
 import pe.richard.news.presenter.core.paging.PagingSourceImplement
 import pe.richard.news.presenter.model.news.News
 import pe.richard.news.presenter.model.news.toData
@@ -21,7 +24,8 @@ import javax.inject.Inject
 internal class HomePresenterImplement @Inject constructor(
     application: Application,
     private val state: SavedStateHandle,
-    private val getNews: GetNews
+    private val getNews: GetNews,
+    private val removeNews: RemoveNews
 ) : AndroidViewModel(application),
     HomePresenter {
 
@@ -40,4 +44,14 @@ internal class HomePresenterImplement @Inject constructor(
                 ).map { paging -> paging.toModel { entity -> entity.toData() } }
             }
         }.flow.cachedIn(viewModelScope)
+
+    override fun clearNews(
+        callback: (Boolean) -> Unit
+    ) {
+        viewModelScope.launch {
+            removeNews()
+                .catch { callback(false) }
+                .collect { model -> callback(model) }
+        }
+    }
 }
