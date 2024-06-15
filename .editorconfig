@@ -5,12 +5,12 @@ charset = utf-8
 end_of_line = lf
 indent_size = 4
 indent_style = space
-trim_trailing_whitespace = true
 insert_final_newline = true
 max_line_length = 1024
 tab_width = 4
 
 [*.{kt,kts}]
+trim_trailing_whitespace = true
 ktlint_code_style = intellij_idea
 ktlint_standard_class-signature = disabled
 ktlint_standard_function-signature = disabled

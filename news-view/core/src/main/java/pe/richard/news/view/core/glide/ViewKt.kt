@@ -9,6 +9,7 @@ fun AppCompatImageView.loadImage(
     key: String,
     uri: Uri?
 ) = context?.let { owner ->
+    setImageDrawable(null)
     uri?.let { source ->
         Glide.with(owner)
             .load(source)

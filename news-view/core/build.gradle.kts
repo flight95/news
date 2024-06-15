@@ -42,6 +42,9 @@ android {
 
 dependencies {
 
+    // Clean architecture domain.
+    implementation(project(":library-domain:model:core"))
+
     // Kotlin core.
     implementation(libs.kotlinx.coroutines)
 
@@ -51,6 +54,11 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.lifecycle)
     implementation(libs.androidx.lifecycle.savedstate)
+
+    // AndroidX UI.
+    implementation(libs.androidx.paging)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.androidx.recyclerview)
 
     // Network.
     implementation(platform(libs.network.okhttp.bom))

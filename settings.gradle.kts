@@ -31,6 +31,7 @@ include(":news-application")
 // Clean architecture view.
 include(":news-view:core")
 include(":news-view:home")
+include(":news-view:news")
 
 // Clean architecture presenter.
 include(":news-presenter:model:news")

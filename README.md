@@ -1,6 +1,8 @@
 # News
 
-![Static Badge](https://img.shields.io/badge/Clean%20Architecture-purple)  
+![Static Badge](https://img.shields.io/badge/Clean%20Architecture-purple)
+![Static Badge](https://img.shields.io/badge/Coroutines%20Flow-purple)   
+![Static Badge](https://img.shields.io/badge/Java-17-red)
 ![Static Badge](https://img.shields.io/badge/Kotlin-2.0.0-red)
 ![Static Badge](https://img.shields.io/badge/Kotlin%20Coroutines-1.8.0-red)
 ![Static Badge](https://img.shields.io/badge/Kotlin%20Serialization-1.6.3-red)
@@ -19,6 +21,7 @@
 
 ![Static Badge](https://img.shields.io/badge/application-grey)   
 ![Static Badge](https://img.shields.io/badge/view-home-red)
+![Static Badge](https://img.shields.io/badge/view-news-red)
 ![Static Badge](https://img.shields.io/badge/view-core-purple)   
 ![Static Badge](https://img.shields.io/badge/presenter-home-red)
 ![Static Badge](https://img.shields.io/badge/presenter-model.news-darkred)
@@ -32,6 +35,7 @@
 
 ### Dependencies
 
+![Static Badge](https://img.shields.io/badge/view-news-red)   
 ![Static Badge](https://img.shields.io/badge/view-home-red) &rarr;
 ![Static Badge](https://img.shields.io/badge/presenter-home-red) &rarr;
 ![Static Badge](https://img.shields.io/badge/domain-news-red)   

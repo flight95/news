@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "${libs.versions.namespace.get()}.view.home"
+    namespace = "${libs.versions.namespace.get()}.view.news"
     compileSdk = libs.versions.sdk.target.get().toInt()
 
     defaultConfig {
@@ -49,12 +49,9 @@ dependencies {
 
     // Clean architecture presenter.
     implementation(project(":news-presenter:model:news"))
-    implementation(project(":news-presenter:core"))
-    implementation(project(":news-presenter:home"))
 
     // Clean architecture view.
     implementation(project(":news-view:core"))
-    implementation(project(":news-view:news"))
 
     // Kotlin core.
     implementation(libs.kotlinx.coroutines)
@@ -68,17 +65,9 @@ dependencies {
 
     // AndroidX UI.
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.paging)
-    implementation(libs.androidx.swiperefreshlayout)
-    implementation(libs.androidx.recyclerview)
     implementation(libs.android.material)
 
     // Dependency injection.
     implementation(libs.dagger.hilt.android)
     ksp(libs.dagger.hilt.compiler)
-
-    // Image.
-    implementation(libs.glide.core)
-    implementation(libs.glide.okhttp)
-    ksp(libs.glide.ksp)
 }

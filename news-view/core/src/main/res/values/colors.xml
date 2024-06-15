@@ -3,5 +3,6 @@
     <color name="background">#F8F8F9</color>
     <color name="toolbar_shadow">#DBDEE3</color>
     <color name="toolbar_tint">#101010</color>
+    <color name="progress">#ACB4BF</color>
     <color name="placeholder">#ACB4BF</color>
 </resources>
