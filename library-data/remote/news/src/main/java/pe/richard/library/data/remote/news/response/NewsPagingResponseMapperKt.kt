@@ -2,8 +2,8 @@ package pe.richard.library.data.remote.news.response
 
 import pe.richard.library.domain.model.core.date.UtcFormat
 import pe.richard.library.domain.model.core.primitive.toUri
+import pe.richard.library.domain.model.core.primitive.trimOrNull
 import pe.richard.library.domain.model.news.NewsModel
-import pe.richard.library.entity.core.primitive.trimOrNull
 
 internal fun NewsPagingResponse.NewsResponse.toModel() =
     try {

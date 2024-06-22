@@ -19,7 +19,7 @@ interface NewsCacheDataAccessObject {
     @Query(
         """
             SELECT * FROM NewsEntities
-            ORDER BY news_published_at
+            ORDER BY news_published_at DESC
             LIMIT :limit OFFSET :offset
         """
     )

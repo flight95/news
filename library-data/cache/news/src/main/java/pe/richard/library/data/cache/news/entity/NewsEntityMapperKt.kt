@@ -3,8 +3,8 @@ package pe.richard.library.data.cache.news.entity
 import pe.richard.library.data.cache.database.news.entity.NewsEntity
 import pe.richard.library.domain.model.core.primitive.aboveOrNull
 import pe.richard.library.domain.model.core.primitive.toUri
+import pe.richard.library.domain.model.core.primitive.trimOrNull
 import pe.richard.library.domain.model.news.NewsModel
-import pe.richard.library.entity.core.primitive.trimOrNull
 
 fun NewsEntity.toModel() =
     try {

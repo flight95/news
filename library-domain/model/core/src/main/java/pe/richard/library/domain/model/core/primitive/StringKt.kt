@@ -1,4 +1,4 @@
-package pe.richard.library.entity.core.primitive
+package pe.richard.library.domain.model.core.primitive
 
 fun String.trimOrNull() =
     trim().let { fixed ->

@@ -6,10 +6,10 @@ data class PagingModel<T>(
     val contents: List<T> = listOf()
 ) {
 
-    fun <R> toModel(converter: (T) -> R) =
+    fun <R> toModel(transform: (T) -> R) =
         PagingModel(
             total = total,
             end = end,
-            contents = contents.map { content -> converter(content) }
+            contents = contents.map { content -> transform(content) }
         )
 }
